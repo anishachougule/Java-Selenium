@@ -1,6 +1,7 @@
 package Basics;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Assignment4 {
@@ -22,6 +23,11 @@ public class Assignment4 {
 		Thread.sleep(1000);
 		driver.findElement(By.id("giftcard_2_Message")).sendKeys("Hey mand badak");
 		Thread.sleep(1000);
+		WebElement qty =driver.findElement(By.id("addtocart_2_EnteredQuantity"));
+		qty.click();
+		qty.clear();
+		qty.sendKeys("2");
+		Thread.sleep(2000);
 		driver.findElement(By.id("add-to-cart-button-2")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.className("ico-cart")).click();
