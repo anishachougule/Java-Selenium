@@ -1,0 +1,40 @@
+package Basics;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignment5 {
+	public static void main(String[] args) throws InterruptedException
+	{
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demowebshop.tricentis.com/");
+		Thread.sleep(1000);
+		//register
+		driver.findElement(By.xpath("/html/body/div[4]/div/div/div[2]/div/ul/li[1]/a")).click();
+		Thread.sleep(1000);
+		//Gender selection Female
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[2]/div[2]/div[1]/div[2]/input")).click();
+		Thread.sleep(1000);
+		//First name
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[2]/div[2]/div[2]/input")).sendKeys("Anisha");
+		Thread.sleep(1000);
+		//last name 
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[2]/div[2]/div[3]/input")).sendKeys("Chougule");
+		Thread.sleep(1000);
+		//email
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[2]/div[2]/div[4]/input")).sendKeys("chouguleanisha20@gmail.com");
+		Thread.sleep(1000);
+		//Password
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[3]/div[2]/div/input")).sendKeys("Anisha@123");
+		Thread.sleep(1000);
+		//Comfirm Password
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[3]/div[2]/div[2]/input")).sendKeys("Anisha@123");
+		Thread.sleep(1000);
+		//register
+		driver.findElement(By.xpath("/html/body/div[4]/div/div[4]/div[2]/form/div/div[2]/div[4]/input")).click();
+		Thread.sleep(3000);		
+		
+		driver.close();
+	}
+}
