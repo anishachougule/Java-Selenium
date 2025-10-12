@@ -1,0 +1,49 @@
+package Basics;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignment10 {
+	public static void main(String[] args) throws InterruptedException
+	{
+		/*Write a script for DWS site
+		 * open the browser
+		 * maximize browser
+		 * enter DWS site
+		 * after entering click digital download 
+		 * after clicking add all the products inside shopping cart
+		 * after adding remove third product from 
+		 * verify the product is successfully remove from the shopping cart or not
+		 * close the browser*/
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demowebshop.tricentis.com/");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[contains(text(),'Digital downloads')]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@value='Add to cart'])")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@value='Add to cart'])[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@value='Add to cart'])[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.className("ico-cart")).click();
+		Thread.sleep(4000);
+		WebElement thirdProduct = driver.findElement(By.xpath("(//input[@name = 'removefromcart'])[]"));
+		thirdProduct.click();
+		Thread.sleep(2000);
+		driver.findElement(By.name("updatecart")).click();
+		Thread.sleep(4000);
+		String cartPage = driver.getPageSource();
+
+		if (!cartPage.contains("3rd product name") && !cartPage.contains("Digital Storm")) {
+			System.out.println("Product successfully removed from the shopping cart — Test Passed ✅");
+		} else {
+			System.out.println("Product is still present in the shopping cart — Test Failed ❌");
+		}
+
+		driver.close();
+		
+	}
+}
