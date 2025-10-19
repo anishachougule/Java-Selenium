@@ -1,0 +1,34 @@
+package Basics;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ContineousSelectDEmoWebShop {
+	public static void main(String[] args) throws InterruptedException
+	{
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.navigate().to("https://demowebshop.tricentis.com/");	
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[contains(text(),'Digital downloads')]")).click();
+		Thread.sleep(2000);
+		WebElement singleSelect =driver.findElement(By.id("products-orderby"));
+		Select sel = new Select(singleSelect);
+		Thread.sleep(2000);
+		int i=0;
+		List<WebElement> opt = sel.getOptions();
+		for(WebElement web : opt)
+		{
+			singleSelect =driver.findElement(By.id("products-orderby"));
+			sel = new Select(singleSelect);
+			sel.selectByIndex(i++);
+			Thread.sleep(1000);
+		}
+		Thread.sleep(2000);
+		driver.close();
+	}
+}
