@@ -1,0 +1,30 @@
+package SelectClass;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class GetfirstSelectedOption {
+	public static void main(String [] args) throws InterruptedException
+	{
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.navigate().to("file:///C:/Users/admin/Downloads/demo.html");
+		Thread.sleep(2000);
+		WebElement multipleCars = driver.findElement(By.id("multiple_cars"));
+		Select sel = new Select(multipleCars);
+		List<WebElement> opt = sel.getOptions();
+		sel.selectByValue("jgr");
+		Thread.sleep(2000);
+		sel.selectByVisibleText("Mini");
+		Thread.sleep(2000);
+		sel.selectByIndex(3);
+		WebElement first = sel.getFirstSelectedOption(); //it prints a number in order 
+		System.out.println("First WebElement : " +first.getText());
+		driver.close();
+		
+	}
+}
