@@ -1,0 +1,32 @@
+package Assignments;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ActionAssignment {
+	public static void main(String[] args) throws InterruptedException
+	{
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demo.guru99.com/test/simple_context_menu.html ");
+		Thread.sleep(2000);
+		String expUrl = "https://demo.guru99.com/test/simple_context_menu.html";
+		String currUrl = driver.getCurrentUrl();
+		if(expUrl.equals(currUrl))
+		{
+			System.out.println("Test Case Pass");
+		}
+		else
+		{
+			System.out.println("Test Case Fail");
+		}
+		Actions act = new Actions(driver);
+		WebElement doubleClick = driver.findElement(By.xpath("//button[text() ='Double-Click Me To See Alert']"));
+		act.doubleClick(doubleClick).perform();
+		Thread.sleep(4000);
+		driver.close();
+		
+	}
+}
